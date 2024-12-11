@@ -15,9 +15,14 @@ export default class Todos {
         const boxDescription = document.createElement("p");
         boxDescription.textContent = this.description;
         const boxDate = document.createElement("div");
-        boxDate.textContent = this.dueDate;
+        boxDate.textContent = "Due Date: " + this.dueDate;
         const boxPriority = document.createElement("div");
-        boxPriority.textContent = this.priority;
+        boxPriority.textContent = "Priority: " + this.priority;
+
+        boxTitle.classList.add("title");
+        boxDescription.classList.add("desc");
+        boxDate.classList.add("date");
+        boxPriority.classList.add("pri");
 
         box.appendChild(boxTitle);
         box.appendChild(boxDescription);

@@ -8,7 +8,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 3fr;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
     font-weight: bolder;
 }
 
@@ -22,4 +21,21 @@ body {
 .todos {
     background-color: beige;
     padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.todos > div {
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+.title {
+    color: red;
+    font-size: calc(0.7rem + 1vw);
+}
+
+.desc {
+    font-weight: 400;
 }

@@ -18,12 +18,17 @@ addBtn.addEventListener("click", (event) => {
     const dueDate = document.querySelector("#duedate").value;
     const priority = document.querySelector("#priority").value;
 
+
     const todoListItem = new Todos(title, description, dueDate, priority);
     todoListItem.createTodo();
 
     dialog.close();
 })
 
+const todo1 = new Todos ("test1", "this is an test desc", "12-12-2014", "low");
+const todo2 = new Todos ("test2", "this is an tessdfdsfdgfdgfght desc", "12-12-2014", "high");
+todo1.createTodo();
+todo2.createTodo();
 
 
 
