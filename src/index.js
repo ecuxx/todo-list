@@ -1,11 +1,27 @@
 import "./styles.css";
 import Todos from "./todo.js"
 import { listTodo, checkDone } from "./todofunc.js";
+import { addProject } from "./projects.js";
 
 const showBtn = document.querySelector("#show-dialog");
 const dialog = document.querySelector("#add-new");
 const addBtn = document.querySelector("#add-btn");
 const todo = document.querySelector(".todos");
+
+const showProjectBtn = document.querySelector("#showPro-dialog");
+const proDialog = document.querySelector("#add-project");
+const addProBtn = document.querySelector("#pro-add-btn");
+
+showProjectBtn.addEventListener("click", () => {
+    proDialog.showModal();
+})
+
+addProBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    addProject();
+    proDialog.close();
+})
+
 
 
 showBtn.addEventListener("click", () => {
