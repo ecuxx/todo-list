@@ -1,4 +1,5 @@
 const todos = document.querySelector(".todos");
+import { priorityColor} from "./todofunc";
 
 export default class Todos {
     constructor(title, description, dueDate, priority) {
@@ -19,17 +20,45 @@ export default class Todos {
         const boxPriority = document.createElement("div");
         boxPriority.textContent = "Priority: " + this.priority;
 
+        const buttons = document.createElement("div");
+
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+        checkbox.classList.add("todo-checkbox");
+        box.classList.add("box");
         boxTitle.classList.add("title");
         boxDescription.classList.add("desc");
         boxDate.classList.add("date");
         boxPriority.classList.add("pri");
 
+        box.appendChild(checkbox);
         box.appendChild(boxTitle);
         box.appendChild(boxDescription);
         box.appendChild(boxDate);
         box.appendChild(boxPriority);
+        buttons.appendChild(delBtn);
+        buttons.appendChild(editBtn);
+        box.appendChild(buttons);
         todos.appendChild(box);
+
+        priorityColor(box, this.priority);
+
+        delBtn.addEventListener("click", () => {
+            box.remove();
+        })
+
     }
+
+
 }
+
+
+
 
 
