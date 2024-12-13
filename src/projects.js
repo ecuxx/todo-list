@@ -1,9 +1,9 @@
 const projects = document.querySelector(".projects");
+const todos = document.querySelector(".todos");
 
 export default class Projects {
     constructor(name) {
         this.name = name;
-        this.todos = [];
     }
 
     createProject() {
@@ -12,6 +12,10 @@ export default class Projects {
 
         newProject.classList.add("project");
         projects.appendChild(newProject);
+
+        newProject.addEventListener("click", () => {
+            todos.remove();
+        })
     }
 }
 
@@ -21,7 +25,6 @@ const addProject = () => {
     const project = new Projects(name);
     project.createProject();
 }
-
 
 const ece = new Projects("ece");
 ece.createProject();
