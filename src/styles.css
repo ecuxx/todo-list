@@ -12,18 +12,22 @@ body {
 }
 
 .side-bar {
-    width: 30vw;
     height: 100vh;
     background-color: blue;
     padding: 3rem;
 }
 
-.todos {
+.main {
     background-color: beige;
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+}
+
+.todos {
+    display: grid;
+    gap: 30px;
 }
 
 .todos > div {

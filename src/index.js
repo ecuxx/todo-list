@@ -73,7 +73,6 @@ todo.addEventListener("click", (event) => {
 
 
 
-
 const todo1 = new Todos ("test1", "this is an test desc", "12-12-2014", "low");
 const todo2 = new Todos ("test2", "this is an tessdfdsfdgfdgfght desc", "12-12-2014", "high");
 const todo3 = new Todos ("test3", "this isodfopjdjfidjfjidifrfjrgi an tessdfdsfdgfdgfght desc", "12-12-2087", "medium");
