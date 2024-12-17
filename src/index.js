@@ -23,7 +23,6 @@ addProBtn.addEventListener("click", (event) => {
 })
 
 
-
 showBtn.addEventListener("click", () => {
     dialog.showModal();
 })

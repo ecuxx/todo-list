@@ -1,7 +1,6 @@
 
 import Todos from "./todo.js";
 
-
 const listTodo = function () {
     const title = document.querySelector("#title").value;
     const description = document.querySelector("#description").value;
@@ -10,7 +9,6 @@ const listTodo = function () {
     
     const todoListItem = new Todos(title, description, dueDate, priority);
     todoListItem.createTodo();
-
 } 
 
 const priorityColor = function (box, priority) {

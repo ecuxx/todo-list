@@ -1,5 +1,6 @@
 const todos = document.querySelector(".todos");
 import { priorityColor} from "./todofunc";
+import { activeProject } from "./projects";
 
 export default class Todos {
     constructor(title, description, dueDate, priority) {
@@ -51,9 +52,25 @@ export default class Todos {
 
         delBtn.addEventListener("click", () => {
             box.remove();
+            this.removeFromProject();
         })
 
+
+        if(activeProject){
+            activeProject.addTodo(this);
+        }
+
     }
+
+    removeFromProject() {
+        if(activeProject){
+            const index = activeProject.todoList.indexOf(this);
+            if(index > -1) {
+                activeProject.todoList.splice(index,1);
+            }
+        }
+    }
+        
 
 
 }
