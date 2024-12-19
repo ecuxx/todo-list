@@ -1,3 +1,6 @@
+import { saveToStorage, loadFromStorage } from "./storage";
+import Todos from "./todo";
+
 const projects = document.querySelector(".projects");
 const todoContainer = document.querySelector(".todos");
 
@@ -17,23 +20,51 @@ export default class Projects {
 
         newProject.addEventListener("click", () => {
             activeProject = this;
-            this.renderTodos();
+            todoContainer.innerHTML = "";
+
             const projectTitle = document.createElement("h3");
             projectTitle.textContent = `Project: ${this.name}`;
-
             todoContainer.appendChild(projectTitle);
+
+            const todosContainer = document.createElement("div");
+            todosContainer.classList.add("todos-container");
+            todoContainer.appendChild(todosContainer);
+
+            this.renderTodos(todosContainer);
+
         })
     }
 
     addTodo(todo) {
         this.todoList.push(todo);
+        saveToStorage("projects", this.exportProjects());
     }
 
-    renderTodos() {
-        todoContainer.innerHTML = "";
+    renderTodos(todosContainer) {
+        todosContainer.innerHTML = "";
         this.todoList.forEach((todo) => {
             todo.createTodo();
         })
+    }
+
+    static loadTodosFromStorage() {
+        const storedData = loadFromStorage("projects");
+        const projects = [];
+        if (storedData) {
+            storedData.forEach((projectData) => {
+                const project = new Projects(projectData.name);
+                project.todoList = projectData.todoList.map((todo) => Todos.fromData(todo));
+                projects.push(project);
+            })
+        }
+        return projects;
+    }
+
+    exportProjects() {
+        return {
+            name: this.name,
+            todoList: this.todoList,
+        };
     }
 
 }

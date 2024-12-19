@@ -1,7 +1,8 @@
 import "./styles.css";
-import Todos from "./todo.js"
 import { listTodo, checkDone } from "./todofunc.js";
-import { addProject } from "./projects.js";
+import { addProject, activeProject } from "./projects.js";
+import { loadFromStorage } from "./storage.js";
+import Projects from "./projects.js";
 
 const showBtn = document.querySelector("#show-dialog");
 const dialog = document.querySelector("#add-new");
@@ -70,14 +71,29 @@ todo.addEventListener("click", (event) => {
 
 
 
+const loadProjectsFromStorage = () => {
+    const projects = Projects.loadProjectsFromStorage();
+
+    projects.forEach((project) => {
+        project.createProject();
+    });
+
+    if (projects.length > 0) {
+        activeProject = projects[0];
+        activeProject.renderTodos(document.querySelector(".todos-container"));
+    }
+};
+
+document.addEventListener("DOMContentLoaded", loadProjectsFromStorage);
 
 
-const todo1 = new Todos ("test1", "this is an test desc", "12-12-2014", "low");
-const todo2 = new Todos ("test2", "this is an tessdfdsfdgfdgfght desc", "12-12-2014", "high");
-const todo3 = new Todos ("test3", "this isodfopjdjfidjfjidifrfjrgi an tessdfdsfdgfdgfght desc", "12-12-2087", "medium");
-todo3.createTodo();
-todo1.createTodo();
-todo2.createTodo();
+
+// const todo1 = new Todos ("test1", "this is an test desc", "12-12-2014", "low");
+// const todo2 = new Todos ("test2", "this is an tessdfdsfdgfdgfght desc", "12-12-2014", "high");
+// const todo3 = new Todos ("test3", "this isodfopjdjfidjfjidifrfjrgi an tessdfdsfdgfdgfght desc", "12-12-2087", "medium");
+// todo3.createTodo();
+// todo1.createTodo();
+// todo2.createTodo();
 
 
 

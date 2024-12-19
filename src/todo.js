@@ -71,7 +71,9 @@ export default class Todos {
         }
     }
         
-
+    static fromData(data) {
+        return new Todos(data.title, data.description, data.dueDate, data.priority);
+    }
 
 }
 
